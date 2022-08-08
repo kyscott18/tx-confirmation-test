@@ -1,0 +1,26 @@
+name: Deploy Master to Production
+
+on:
+  push:
+    branches: [master]
+
+env:
+  MNEMONIC: ${{ secrets.MNEMONIC }}
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    name: Benchmark
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/yarn
+      - run: yarn time
+      - run: |
+          if [ "$(git diff-index HEAD)" != '' ]; then
+            git config --global user.email "teasegrizzley@protonmail.com"
+            git config --global user.name "teaseGrizzley"
+            git add .
+            git commit -m "Update list"
+            git push origin HEAD
+          fi
