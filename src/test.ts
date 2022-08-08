@@ -26,11 +26,10 @@ export const testResponseTime = async (): Promise<void> => {
     chainId: 42220,
   };
 
-  console.log(signer);
   const tx = await signer.sendTransaction(transactionParameters);
   console.log(tx.hash);
-  // await tx.wait();
-  // console.log("sent");
+  await tx.wait();
+  console.log("done");
 };
 
 testResponseTime().catch((err) => {
