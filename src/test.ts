@@ -35,13 +35,9 @@ interface Output {
 export const testResponseTime = async (): Promise<void> => {
   let output: Output[] = [];
   for (let endpoint in endpoints) {
-    console.log(endpoint);
     const provider = new ethers.providers.JsonRpcProvider(endpoint);
-    console.log(1, provider);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("waited");
     const gasPrice = await provider.getGasPrice();
-    console.log(2, gasPrice.toString());
     const env = load({
       MNEMONIC: String,
     });
