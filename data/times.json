@@ -1,0 +1,45 @@
+[
+  {
+    "endpoint": "https://forno.celo.org",
+    "data": [
+      {
+        "awaitMethod": "Wait",
+        "sendMean": 0.319,
+        "confirmMean": 5.3982,
+        "sendRawData": [
+          304,
+          330,
+          317,
+          359,
+          285
+        ],
+        "confirmRawData": [
+          9024,
+          4586,
+          4454,
+          4460,
+          4467
+        ]
+      },
+      {
+        "awaitMethod": "On",
+        "sendMean": 0.3516,
+        "confirmMean": 4.3538,
+        "sendRawData": [
+          387,
+          307,
+          441,
+          313,
+          310
+        ],
+        "confirmRawData": [
+          4291,
+          4433,
+          4288,
+          4364,
+          4393
+        ]
+      }
+    ]
+  }
+]
