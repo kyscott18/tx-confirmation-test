@@ -39,8 +39,6 @@ export const testResponseTime = async (): Promise<void> => {
   let outputData: Data[] = [];
 
   for (let awaitMethod in AwaitMethod) {
-    // const awaitMethod = AwaitMethod.Wait;
-    console.log(awaitMethod, AwaitMethod.On, AwaitMethod.Wait);
     let sendTimes: number[] = [];
     let confirmationTimes: number[] = [];
 
@@ -60,9 +58,7 @@ export const testResponseTime = async (): Promise<void> => {
       invariant(hash);
       sendTimes = sendTimes.concat(Date.now() - startSend);
       const startConfirm = Date.now();
-      console.log("here");
       if (awaitMethod === AwaitMethod.On) {
-        console.log("on");
         await new Promise((resolve: (e: ContractReceipt) => void) =>
           provider.once(hash, (e: ContractReceipt) => {
             resolve(e);
@@ -70,12 +66,10 @@ export const testResponseTime = async (): Promise<void> => {
           })
         );
       } else if (awaitMethod === AwaitMethod.Wait) {
-        console.log("wait");
         await tx.wait();
       } else {
         console.error("I wish typescript had pattern matching");
       }
-      console.log("out");
 
       confirmationTimes = confirmationTimes.concat(Date.now() - startConfirm);
     }
