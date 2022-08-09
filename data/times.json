@@ -4,33 +4,17 @@
     "data": [
       {
         "awaitMethod": "Wait",
-        "sendMean": 0.294,
-        "confirmMean": 7.319333333333334,
-        "sendRawData": [
-          302,
-          271,
-          309
-        ],
-        "confirmRawData": [
-          4740,
-          8459,
-          8759
-        ]
+        "sendMean": 0.3085,
+        "confirmMean": 4.596,
+        "sendRawData": [313, 304],
+        "confirmRawData": [4753, 4439]
       },
       {
         "awaitMethod": "On",
-        "sendMean": 0.305,
-        "confirmMean": 4.302,
-        "sendRawData": [
-          328,
-          301,
-          286
-        ],
-        "confirmRawData": [
-          4293,
-          4325,
-          4288
-        ]
+        "sendMean": 0.294,
+        "confirmMean": 8.3875,
+        "sendRawData": [277, 311],
+        "confirmRawData": [8283, 8492]
       }
     ]
   }

@@ -5,15 +5,17 @@ import invariant from "tiny-invariant";
 import * as fs from "fs/promises";
 
 const endpoints = [
-  // "https://forno.celo.org",
-  // "https://rpc.ankr.com/celo",
+  "https://forno.celo.org",
+  "https://rpc.ankr.com/celo",
   "https://chaotic-tiniest-asphalt.celo-mainnet.discover.quiknode.pro/2fc0e56df28958791722e76f556e061b611c57f4/",
   // "wss://chaotic-tiniest-asphalt.celo-mainnet.discover.quiknode.pro/2fc0e56df28958791722e76f556e061b611c57f4/",
-  // "https://celo-mainnet--rpc.datahub.figment.io/apikey/dbc541e98aeb3b440fc93d7461fde8ac",
-  // "https://celo-mainnet-rpc.allthatnode.com/psykb4NCHqB85xJFkmRFiXcMzzg3bIjB",
+  "https://celo-mainnet--rpc.datahub.figment.io/apikey/dbc541e98aeb3b440fc93d7461fde8ac",
+  "https://celo-mainnet-rpc.allthatnode.com/psykb4NCHqB85xJFkmRFiXcMzzg3bIjB",
 ];
 
 const Kyle = "0x59A6AbC89C158ef88d5872CaB4aC3B08474883D9";
+
+const runs = 25;
 
 enum AwaitMethod {
   Wait = "Wait",
@@ -34,9 +36,8 @@ interface Output {
 
 export const testResponseTime = async (): Promise<void> => {
   let output: Output[] = [];
-  for (let endpoint in endpoints) {
-    const provider = new ethers.providers.JsonRpcProvider(endpoint);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  for (let i = 0; i < endpoints.length; i++) {
+    const provider = new ethers.providers.JsonRpcProvider(endpoints[i]!);
     const gasPrice = await provider.getGasPrice();
     const env = load({
       MNEMONIC: String,
@@ -50,7 +51,7 @@ export const testResponseTime = async (): Promise<void> => {
       let sendTimes: number[] = [];
       let confirmationTimes: number[] = [];
 
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < runs; i++) {
         const startSend = Date.now();
         const transactionParameters = {
           to: Kyle,
@@ -97,7 +98,7 @@ export const testResponseTime = async (): Promise<void> => {
       outputData = outputData.concat(data);
     }
     let out: Output = {
-      endpoint,
+      endpoint: endpoints[i]!,
       data: outputData,
     };
 
