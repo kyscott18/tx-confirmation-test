@@ -9,7 +9,7 @@ const endpoints = [
   "https://rpc.ankr.com/celo",
   "https://chaotic-tiniest-asphalt.celo-mainnet.discover.quiknode.pro/2fc0e56df28958791722e76f556e061b611c57f4/",
   // "wss://chaotic-tiniest-asphalt.celo-mainnet.discover.quiknode.pro/2fc0e56df28958791722e76f556e061b611c57f4/",
-  "https://celo-mainnet--rpc.datahub.figment.io/apikey/dbc541e98aeb3b440fc93d7461fde8ac",
+  "https://celo-mainnet--rpc.datahub.figment.io/apikey/dbc541e98aeb3b440fc93d7461fde8ac/",
   "https://celo-mainnet-rpc.allthatnode.com/psykb4NCHqB85xJFkmRFiXcMzzg3bIjB",
 ];
 
