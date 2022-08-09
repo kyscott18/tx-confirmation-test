@@ -1,9 +1,5 @@
 name: Benchmark
 
-on:
-  push:
-    branches: [master]
-
 env:
   MNEMONIC: ${{ secrets.MNEMONIC }}
 

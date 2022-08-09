@@ -36,6 +36,7 @@ interface Output {
 
 export const testResponseTime = async (): Promise<void> => {
   let output: Output[] = [];
+  let nonce: number | null = null;
   for (let i = 0; i < endpoints.length; i++) {
     const provider = new ethers.providers.JsonRpcProvider(endpoints[i]!);
     const gasPrice = await provider.getGasPrice();
@@ -44,6 +45,8 @@ export const testResponseTime = async (): Promise<void> => {
     });
     const wallet = ethers.Wallet.fromMnemonic(env.MNEMONIC);
     const signer = wallet.connect(provider);
+    if (nonce === null)
+      nonce = await provider.getTransactionCount(wallet.address, "latest");
 
     let outputData: Data[] = [];
 
@@ -59,8 +62,9 @@ export const testResponseTime = async (): Promise<void> => {
           gasPrice: gasPrice,
           gasLimit: ethers.utils.hexlify(100000),
 
-          nonce: await provider.getTransactionCount(wallet.address, "latest"),
+          nonce: nonce,
         };
+        nonce = nonce + 1;
         const tx = await signer.sendTransaction(transactionParameters);
         const hash = tx.hash;
         invariant(hash);
