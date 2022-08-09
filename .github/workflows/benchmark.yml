@@ -1,4 +1,4 @@
-name: Deploy Master to Production
+name: Benchmark
 
 on:
   push:

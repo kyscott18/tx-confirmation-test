@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@saberhq/tsconfig": "^1.13.28",
-    "@yarnpkg/doctor": "^4.0.0-rc.9",
     "ethers": "^4",
     "jsbi": "^4.3.0",
     "lodash": "^4.17.21",
@@ -37,8 +36,7 @@
     "typecheck": "tsc",
     "lint": "eslint . --cache",
     "lint:ci": "eslint . --max-warnings=0",
-    "lint:fix": "eslint . --fix",
-    "doctor:packages": "yarn doctor packages/"
+    "lint:fix": "eslint . --fix"
   },
   "lint-staged": {
     "*.ts": "eslint --cache --fix",
